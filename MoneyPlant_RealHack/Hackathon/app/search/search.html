@@ -1,0 +1,202 @@
+﻿<div class="container">
+
+    <div class="row form-group"><br /><br />
+        <div class="col-xs-12">Search Properties:</div>
+        <div class="col-md-9">
+            <input type="text" placeholder="by property name, by sq.sft, by area" class="form-control input-lg" />
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-lg"> Search Properties</button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <h2 class="wow zoomIn animated" data-wow-delay="0.5s">Properties</h2>
+    <div class="row">
+        <div class="col-md-4 wow zoomIn animated" data-wow-delay="1s" ng-repeat="item in propertyList">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">{{item.Property.Name}}</h4>
+                    <span class=""><span ng-class="(item.Property.Type.Name === 'Residential') ? 'glyphicon glyphicon-home' : 'glyphicon glyphicon-oil'"></span> {{item.Property.Type.Name}}</span>
+
+                </div>
+                <div class="panel-body">
+                    <img class="img img-thumbnail" src="{{item.Property.ImageUrl}}" />
+                    <div class="tile-details">
+                        <label><span class="glyphicon glyphicon-th-large"></span>Sq.Sft:</label><span>{{item.Property.PricePerSqft | currency}}</span>
+                        <label><span class="glyphicon glyphicon-indent-left"></span>Funded:</label><span>{{item.Property.PercentageFunded}} %</span>
+                        <label><span class="glyphicon glyphicon-user"></span>Investors:</label><span>{{item.Property.NoOFInvestors}}</span>
+                        <label><span class="glyphicon glyphicon-gift"></span>ROI:</label><span>{{item.Property.PercentageofProfit}} % </span>
+                        <label><span class="glyphicon glyphicon-briefcase"></span>Min Investment:</label><span> {{item.Property.MinInvestment}}</span>
+                        <label><span class="glyphicon glyphicon-usd"></span>Property Value:</label><span>{{item.Property.PropertyValue}}</span>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" ng-click="selectProperty(item.Property)" class="btn btn-primary btn-block" data-toggle="modal" data-target="#applyModal">Invest Now</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--apply modal-->
+
+
+    <div id="applyModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{selectedProperty.Name}}</h4>
+                </div>
+                <div class="modal-body" ng-hide="showRegistration">
+                    <p>Just use our smart caluclator that helps you find properties for your investment </p>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><strong>How much do you want to invest?</strong></h4>
+                        </div>
+                    </div>
+                    <div class="slide-details">
+                        <div class="col-md-3">
+                            <label>Total Available Sq.Sft: </label>{{selectedProperty.Sqft}}
+                        </div>
+                        <div class="col-md-3">
+                            <label>Cost Per Sq.Sft: </label>${{selectedProperty.PricePerSqft}}
+                        </div>
+                        <div class="col-md-3">
+                            <label>Sq.Sft Can Invest: </label>{{sftCanBuy | number : 2}}
+                        </div>
+                        <div class="col-md-3">
+                            <label>Investment Amount: </label>${{selectedUserValue}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 text-right">
+                            <label>Min $<br />{{defaultMin}}</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="range" ng-change="updateSft(selectedUserValue)" min="{{defaultMin}}" max="{{maxinput}}" ng-model="selectedUserValue" format="currency" ng-keyup="updateSft(selectedUserValue)" class="form-control " />
+                        </div>
+                        <div class="col-md-2 text-left">
+                            <label>Max $<br />{{maxinput}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" ng-hide="showRegistration">
+                    <button type="button" class="btn btn-default pull-left" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary pull-right" ng-click="showRegistration = true">Invest Now</button>
+                </div>
+
+
+                <div class="modal-body" ng-show="showRegistration">
+                    <div class="text-center social-btn">
+                        <a href="javascript:;" class="btn facebook btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                        <a href="javascript:;" class="btn btn-block twitter"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
+                        <a href="javascript:;" class="btn btn-block gmail"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+                    </div>
+
+                    <form class="form-horizontal" name="registration">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">First Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="first_name" placeholder="First Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Last Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="last_name" placeholder="Last Name" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Username</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="user_name" placeholder="Username" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Password</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="user_password" placeholder="Password" class="form-control" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Confirm Password</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="confirm_password" placeholder="Confirm Password" class="form-control" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">E-Mail</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Contact No.</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input name="contact_no" placeholder="(639)" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer" ng-show="showRegistration">
+                    <button type="button" class="btn btn-default pull-left" ng-click="cancel()" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" ng-click="moveToRegister()">Register</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--apply modal-->
+
+
+</div>
+
+
+

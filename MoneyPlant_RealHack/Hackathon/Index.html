@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Money Plant (Fractional Ownership %)</title>
+    <meta charset="utf-8" />
+    <script src="json/seededdata.js"></script>
+    <script src="json/userlist.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Fjalla+One|Montserrat|ZCOOL+XiaoWei" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.10/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.js"></script>
+
+    <!--high charts-->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <!--high charts-->
+
+
+    <script src="app.js"></script>
+    <script src="app/landing/landing.module.js"></script>
+    <script src="app/search/search.module.js"></script>
+    <script src="app/dashboard/dashboard.module.js"></script>
+    <script src="app/packages/packages.module.js"></script>
+    <script src="app/personal/personal.module.js"></script>
+
+</head>
+<body ng-class="{'intro-bg':getState()=== '/landing'}" ng-app="rpWealShare" ng-controller="rpWealShareController">
+    <header>
+        <div class="logo-container" ng-click="gotoPage('landing')">
+            <span class="wow bounceInDown animated"></span>
+            <h1 class="wow fadeIn animated" data-wow-delay="1s">Money Plant</h1>
+        </div>
+        <div class="header-controls">
+            <a ng-click="gotoPage('packages')" ng-if="getState() !== '/packages'" class="wow bounceInDown animated" data-wow-delay="0.3s">Explore Packages</a>
+            <a ng-click="gotoPage('search')" ng-if="getState() !== '/search'" class="wow bounceInDown animated" data-wow-delay="0.4s">View Properties</a>
+            <a ng-if="getState() !== '/dashboard' && getState() !== '/personal'" class="wow bounceInDown animated" data-wow-delay="0.5s">Sign In</a>
+            <a ng-if="getState() === '/dashboard' || getState() == '/personal'">Welcome {{loggedinUser.Name}}</a>
+        </div>
+    </header>
+    <div class="main-container">
+        <ui-view></ui-view>
+        <footer class="wow fadeInLeft animated" data-wow-delay="4s">&copy; Copyright reserved by <img ng-src="{{getRealthonImg()}}" /> </footer>
+    </div>
+</body>
+</html>

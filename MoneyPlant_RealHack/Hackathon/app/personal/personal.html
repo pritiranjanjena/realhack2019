@@ -1,0 +1,142 @@
+﻿
+<div class="container-fluid personal">
+    <h2 class="wow zoomIn animated" data-wow-delay="0.5s">Personal Information</h2>
+    <div class="row">
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Personal Information<span class="glyphicon glyphicon-chevron-down pull-right"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Upload Documents<span class="glyphicon glyphicon-chevron-down pull-right"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Sign Agreements<span class="glyphicon glyphicon-chevron-down pull-right"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Payment Information<span class="glyphicon glyphicon-chevron-down pull-right"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Guarantor/Nominee Details<span class="glyphicon glyphicon-chevron-down pull-right"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 wow zoomIn animated" data-wow-delay="1s">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="">Summary<span class="glyphicon glyphicon-chevron-up pull-right"></span></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p><strong>Property name:</strong></p>
+                        </div>
+                        <div class="col-xs-9">
+                            Huntington Vista
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p><strong>Your Wallet ID:</strong></p>
+                        </div>
+                        <div class="col-xs-9">
+                            7a5ffed9-3654-347e-af3d-3kcaaf2bd2df
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p><strong>Your Public Key:</strong></p>
+                        </div>
+                        <div class="col-xs-9">
+                            A5934E36H2A52FE0FD4S3624366437_B3243856303DA61F20BE38BJ128GG66967
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <p><strong>Your Private Key:</strong></p>
+                        </div>
+                        <div class="col-xs-9">
+                            E9873D79C6D87DC0FB6A5778633389_F4453213303DA61F20BD67FC233AA33262
+                        </div>
+                    </div>
+                    <div class="summary-section">
+                        <div class="section">
+                            <span>
+                                Investment
+                            </span>
+                            <em>
+                                $50,000
+                            </em>
+                        </div>
+                        <div class="section">
+                            <span>
+                                Ownership Share
+                            </span>
+                            <em>
+                                2.4%
+                            </em>
+                        </div>
+                        <div class="section">
+                            <span>
+                                Area Allotment
+                            </span>
+                            <em>
+                                618 <i>Sq.Sft.</i>
+                            </em>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="button" class="btn-primary btn pull-right btn-lg" value="Pay" ng-click="openPayment()" data-toggle="modal" data-target="#payModal" data-backdrop="static" data-keyboard="false" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--apply modal-->
+
+
+    <div id="payModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Please wait...</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <h3> Payment is in progress</h3>
+                    <h1>We are generating SMART contract</h1>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressValue}}%">
+                            <span class="sr-only">45% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--apply modal-->
+</div>
+
+
+
